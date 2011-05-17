@@ -25,5 +25,9 @@ describe "Belongs To Enum models" do
       break
     end
   end
+  
+  it "has pretty items" do
+    raise User::Role.items
+  end
 
 end
