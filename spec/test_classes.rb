@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
   
-  belongs_to_enum :role, [:user, :admin, :superadmin, :suspended]
+  belongs_to_enum :role, [:normal, :admin, :superadmin, :suspended]
   
 end

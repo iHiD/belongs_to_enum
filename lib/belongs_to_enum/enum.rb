@@ -12,6 +12,11 @@ module BelongsToEnum
     def Enum.method_missing(key, *args)
       @hash[key] || super
     end
+    
+    def Enum.respond_to?(key)
+      return true if super(key)
+      return @hash && @hash[key]
+    end
 
     def Enum.each
       @hash.each {|key,value| yield(key,value)}
