@@ -17,6 +17,9 @@ $stdout = StringIO.new
 
 ActiveRecord::Base.logger
 ActiveRecord::Schema.define(:version => 1) do
+  create_table :users do |t|
+    t.integer :role_id, :null => false
+  end
 end
 
 require 'test_classes'

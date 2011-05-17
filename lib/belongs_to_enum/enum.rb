@@ -41,16 +41,13 @@ module BelongsToEnum
       @hash
     end
 
-    def self.create(name, keys)
+    def self.create(name, parent, keys)
       
       # Check to see if this has already been defined...
-      begin
-        "#{self.name}::#{name.to_s.camelize}".constantize
-        return
-      rescue
-      end
+      return if parent.const_defined?(name.to_s.camelize)
 
-      klass = self.const_set name.to_s.camelize, Class.new(Enum)
+      klass = Class.new(Enum)
+      parent.const_set(name.to_s.camelize, klass)
 
       if keys.respond_to? :raw_hash
         keys.raw_hash.each do |k,v|
