@@ -1,2 +1,42 @@
 Adds support for transparent enums to ActiveRecord.
 Adds a belongs_to_enum to ActiveRecord that takes an array of possible values.
+
+Adds an add_extra_data method to ActiveRecord that invisibly includes an extra data table. Use with STI to keep your database clean. It removes the need to have lots of nullable columns.
+
+Usage
+---------
+Use in Rails 3 app. Add to bundler:
+gem "belongs_to_enum"
+
+Tests
+---------
+Uses rspec for testing.
+Run tests with rspec spec/*
+
+Todo
+---------
+* Add scopes
+
+Example
+---------
+
+Usage:
+
+    In models:
+        scope :admin, where(:role_id => User::Role.admin)
+    
+    In views:
+        =f.select(:role, User::Role.pretty_items)
+        -User::Role.each do |role_title, role_id|
+            #{role_title} (#{role_id})
+        
+Classes:
+    class User < ActiveRecord::Base
+      belongs_to_enum :role, [:normal, :admin, :superadmin, :suspended]
+    end
+
+Database Schema:
+
+    create_table :users do |t|
+      t.float :role_id
+    end
