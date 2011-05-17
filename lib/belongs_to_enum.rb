@@ -1,0 +1,3 @@
+module BelongsToEnum
+  # Your code goes here...
+end
