@@ -26,12 +26,12 @@ describe "Belongs To Enum models" do
     end
   end
   
-  it "has pretty items" do
-    User::Role.pretty_items.first[0].should == "Normal"
-    User::Role.pretty_items.first[1].should == 1
+  it "has items_for_select" do
+    User::Role.items_for_select.first[0].should == "Normal"
+    User::Role.items_for_select.first[1].should == 1
   end
   
-  it "has depreciated items method that maps to pretty_items" do
+  it "has depreciated items method that maps to items_for_select" do
     User::Role.items.first[0].should == "Normal"
     User::Role.items.first[1].should == 1
   end

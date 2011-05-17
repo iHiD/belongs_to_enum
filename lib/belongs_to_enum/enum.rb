@@ -26,13 +26,13 @@ module BelongsToEnum
       @hash.values
     end
 
-    def Enum.pretty_items
+    def Enum.items_for_select
       @hash.sort{|a,b| a[1]<=>b[1]}.map{|i|[i[0].to_s.gsub("_", " ").capitalize,i[1]]}
     end
     
     def Enum.items
       warn "DEPRECIATED belongs_to_enum: Use pretty items instead"
-      pretty_items
+      items_for_select
     end
 
     def Enum.get(value)
