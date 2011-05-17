@@ -35,5 +35,14 @@ describe "Belongs To Enum models" do
     User::Role.items.first[0].should == "Normal"
     User::Role.items.first[1].should == 1
   end
+  
+  it "can get item from id" do
+    User::Role.get(1).should == :normal
+  end
+
+  it "pretty displays item" do
+    User::Role.display(1).should == "Normal"
+  end
+  
 
 end

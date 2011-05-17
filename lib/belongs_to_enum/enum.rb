@@ -36,11 +36,11 @@ module BelongsToEnum
     end
 
     def Enum.get(value)
-      @hash.key(value).to_s
+      @hash.key(value)
     end
 
     def Enum.display(value)
-      get(value).gsub("_", " ").titleize
+      get(value).to_s.gsub("_", " ").titleize
     end
 
     def Enum.raw_hash
