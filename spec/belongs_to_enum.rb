@@ -44,5 +44,11 @@ describe "Belongs To Enum models" do
     User::Role.display(1).should == "Normal"
   end
   
+  it "can access raw hash" do
+    User::Role.raw_hash.is_a?(Hash)
+    User::Role.raw_hash.keys[0].should == :normal
+    User::Role.raw_hash.values[0].should == 1
+  end
+  
 
 end
