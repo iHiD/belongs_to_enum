@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Belongs To Enum models" do
 
   it "constants should be set" do
-    User.const_defined?("Role").should == true
+    User.const_defined?("Role").should be_true
   end
   
   it "constant has keys" do
@@ -27,7 +27,13 @@ describe "Belongs To Enum models" do
   end
   
   it "has pretty items" do
-    raise User::Role.items
+    User::Role.pretty_items.first[0].should == "Normal"
+    User::Role.pretty_items.first[1].should == 1
+  end
+  
+  it "has depreciated items method that maps to pretty_items" do
+    User::Role.items.first[0].should == "Normal"
+    User::Role.items.first[1].should == 1
   end
 
 end
