@@ -1,0 +1,2 @@
+Adds support for transparent enums to ActiveRecord.
+Adds a belongs_to_enum to ActiveRecord that takes an array of possible values.
