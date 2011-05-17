@@ -17,5 +17,13 @@ describe "Belongs To Enum models" do
   it "keys should respect hash values" do
     Vehicle::Make.honda.should == 10
   end
+  
+  it "keys can be iterated through" do
+    User::Role.each do |role, role_id|
+      role.should == :normal
+      role_id.should == 1
+      break
+    end
+  end
 
 end

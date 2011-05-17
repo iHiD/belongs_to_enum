@@ -5,10 +5,6 @@ module BelongsToEnum
       @hash[key]=value
     end
 
-    def Enum.get_from_key(key)
-      @hash[key]
-    end
-
     def Enum.method_missing(key, *args)
       @hash[key] || super
     end
