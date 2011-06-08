@@ -18,6 +18,11 @@ describe "Belongs To Enum models" do
     User::Role.valid?(1).should be_true
     User::Role.valid?(100).should be_false
   end
+  
+  it "has a default value" do
+    User::Role.default.should == 1
+    Vehicle::Make.default.should == 10
+  end
 
   it "keys should respect hash values" do
     Vehicle::Make.honda.should == 10

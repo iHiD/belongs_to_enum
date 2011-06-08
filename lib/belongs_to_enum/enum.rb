@@ -51,6 +51,10 @@ module BelongsToEnum
       @hash.has_value?(value.to_i)
     end
 
+    def Enum.default
+      @hash.values.first
+    end
+
     def self.create(name, parent, keys)
       
       # Check to see if this has already been defined...
