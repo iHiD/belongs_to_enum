@@ -13,6 +13,11 @@ describe "Belongs To Enum models" do
   it "keys should start at 1" do
     User::Role.normal.should == 1
   end
+  
+  it "can check to see if a key is valid" do
+    User::Role.valid?(1).should be_true
+    User::Role.valid?(100).should be_false
+  end
 
   it "keys should respect hash values" do
     Vehicle::Make.honda.should == 10

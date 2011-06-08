@@ -31,7 +31,7 @@ module BelongsToEnum
     end
     
     def Enum.items
-      warn "DEPRECIATED belongs_to_enum: Use pretty items instead"
+      warn "DEPRECIATED belongs_to_enum: Use items_for_select instead"
       items_for_select
     end
 
@@ -45,6 +45,10 @@ module BelongsToEnum
 
     def Enum.raw_hash
       @hash
+    end
+
+    def Enum.valid?(value)
+      @hash.has_value?(value.to_i)
     end
 
     def self.create(name, parent, keys)
