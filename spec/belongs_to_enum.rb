@@ -127,11 +127,11 @@ describe "Belongs To Enum models" do
       belongs_to_enum :role2, [:admin]
     end
     klass.should respond_to("sanity_scope")
-    klass.should respond_to("normals")
-    klass.should_not respond_to("admins")
+    klass.should respond_to("normal")
+    klass.should_not respond_to("admin")
     
-    klass.method("normals").source_location.should == klass.method("sanity_scope").source_location
-    klass.send("normals").to_sql.strip.should == 'SELECT "scope_checkers".* FROM "scope_checkers"'
+    klass.method("normal").source_location.should == klass.method("sanity_scope").source_location
+    klass.send("normal").to_sql.strip.squeeze(" ").should == 'SELECT "scope_checkers".* FROM "scope_checkers" WHERE (role1_id = 1)'
   end
   
 

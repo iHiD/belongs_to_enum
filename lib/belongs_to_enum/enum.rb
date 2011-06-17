@@ -82,7 +82,7 @@ module BelongsToEnum
       if options[:create_scopes]
         klass.raw_hash.each do |key, value|
           parent.instance_exec do
-            scope key.to_s.pluralize, where("#{name.to_s.underscore}_id" == value)
+            scope key.to_s, where("#{name.to_s.underscore}_id = #{value}")
           end
         end
       end
