@@ -55,7 +55,7 @@ module BelongsToEnum
       @hash.values.first
     end
 
-    def self.create(name, parent, keys)
+    def self.create(name, parent, keys, options = {})
       
       # Check to see if this has already been defined...
       return if parent.const_defined?(name.to_s.camelize)
@@ -72,13 +72,18 @@ module BelongsToEnum
         keys.each do |k,v|
           klass.add_item(k,v)
         end
-      #elsif(keys.respond_to? :raw_hash)
-      #  keys.send(:raw_hash).each do |k,v|
-      #    klass.add_item(k,v)
-      #  end
       else
         keys.each_with_index do |key, index|
           klass.add_item(key, index + 1)
+        end
+      end
+      
+      # Create scopes if required
+      if options[:create_scopes]
+        klass.raw_hash.each do |key, value|
+          parent.instance_exec do
+            scope key.to_s.pluralize, where("#{name.to_s.underscore}_id" == value)
+          end
         end
       end
     end

@@ -2,8 +2,8 @@ require File.join(File.dirname(__FILE__), "enum")
 
 module BelongsToEnum
   module Hook
-    def belongs_to_enum(name, keys)
-      BelongsToEnum::Enum.create(name, self, keys)
+    def belongs_to_enum(name, keys, options = {})
+      BelongsToEnum::Enum.create(name, self, keys, options)
       name = name.to_s
       class_eval <<-EOS
         def #{name}?
