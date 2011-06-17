@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email       = ["jez.walker@gmail.com"]
   s.homepage    = ""
   s.summary     = %q{Adds support for transparent enums to ActiveRecord}
-  s.description = %q{Adds a belongs_to_enum to ActiveRecord that takes an array of possible values.}
+  s.description = %q{Adds belongs_to_enum method to ActiveRecord::Base, allowing enums to be created with associated scopes and more.}
 
   s.rubyforge_project = "belongs_to_enum"
   
